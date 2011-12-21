@@ -13,7 +13,7 @@
           % my $image = @{ $images }[$i];
           <div class="span3" style="height: 150px">
             <a href="<%= $image->url %>">
-              <img class="thumbnail" src="<%= $image->thumb %>"/>
+              <img class="thumbnail center" src="<%= $image->thumb %>"/>
             </a>
           </div>
         % }
