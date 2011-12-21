@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coxify</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/coxify.css"/>
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21543926-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="page-header">
+          <h1>Coxify <small>Remember everything</small></h1>
+        </div>
+        <ul class="breadcrumb">
+          % for my $i (0 .. (scalar(@{ $breadcrumbs }) - 1)) {
+              % my $crumb = $breadcrumbs->[$i];
+              <li>
+                % if ($i == scalar(@{$breadcrumbs}) - 1) {
+                  %= $crumb->{title}
+                % } else {
+                  <a href="<%= $crumb->{path} %>"><%= $crumb->{title} %></a>
+                  <span class="divider">/</span>
+                % } 
+              </li>
+          % }
+        </ul>
+        <%= content %>
+      </div>
+    </div>
+  </body>
+</html>

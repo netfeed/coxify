@@ -1,0 +1,22 @@
+%layout 'default';
+
+<section>
+  <div class="row">
+    <div class="span12">
+      % my $style = '';
+      % if ($image->width > 690) {
+      %   $style = 'style="width: 650px"';
+      % }
+      <img class="center" <%== $style %> src="<%= $image->medium %>"/>
+    </div>
+    <div class="span4"> 
+      % for my $thumb (@{ $thumbs }) {
+        <div class="row" style="height: 150px">
+            <a href="<%= $thumb->url() %>">
+              <img class="center" src="<%= $thumb->thumb() %>"/>
+            </a>
+        </div>
+      % }
+    </div>
+  </div>
+</section>
