@@ -14,7 +14,7 @@ sub date_list {
       active => 1,
       created_date => { gt_le => [ $from_date, $to_date ] }
     ],
-    order_by => 'created_date ASC',
+    sort_by => 'created_date ASC',
     group_by => 'created_date'
   );
 
@@ -52,7 +52,7 @@ sub year_list {
   my ($sql, $binds) = Coxify::Model::Image::Manager->get_objects_sql(
     select => [ "date_trunc('month', t1.created_date)",  "count(date_trunc('month', t1.created_date))" ], 
     where => \@where,
-    order_by => "date_Trunc('month', t1.created_date) ASC",
+    sort_by => "date_Trunc('month', t1.created_date) ASC",
     group_by => "date_trunc('month', t1.created_date)",
   );
 
