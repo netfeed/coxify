@@ -3,6 +3,7 @@
 <section>
   <div class="row">
     <div class="span12">
+      &nbsp;
       % my $style = '';
       % if ($image->width > 690) {
       %   $style = 'style="width: 650px"';
