@@ -21,10 +21,10 @@
     </div>
     <div class="span4"> 
       <ul>
-        % for my $year (sort { $a <=> $b } keys %{ $years }) {
+        % for my $year (reverse(sort { $a <=> $b } keys %{ $years })) {
           <li><a href="/image/<%= $year %>"><%= $year %></a></li>
           <ul>
-            % for my $month (sort { $a->{month} <=> $b->{month} } @{ $years->{$year} }) {
+            % for my $month (reverse(sort { $a->{month} <=> $b->{month} } @{ $years->{$year} })) {
               <li><a href="<%= $month->{url} %>"><%= $month->{month}->month_name %></a> (<%= $month->{count} %>)</li>
             % }
           </ul>

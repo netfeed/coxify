@@ -31,6 +31,8 @@ sub date_list {
     };
   }
 
+  @dates = reverse @dates;
+
   return \@dates;
 }
 
@@ -69,7 +71,7 @@ sub year_list {
     };   
   }
 
-  @year = sort { $a->{month} <=> $b->{month} } @year;
+  @year = reverse sort({ $a->{month} <=> $b->{month} } @year);
 
   return \@year;
 }
