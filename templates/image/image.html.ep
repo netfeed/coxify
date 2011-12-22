@@ -11,23 +11,23 @@
       <img class="center" <%== $style %> src="<%= $image->medium %>"/>
     </div>
     <div class="span4"> 
-      % if ($previous) {
-        <div class="row" style="height: 150px">
-          <a href="<%= $previous->url() %>">
-            <div class="span3 thumb-height coxify-image">
-              <img class="center" src="<%= $previous->thumb() %>"/>
-              <p><span>Previous</span></p>
+      % if ($next) {
+        <div class="row thumb-height">
+          <a href="<%= $next->url() %>">
+            <div class="span3 coxify-image">
+              <img class="center" src="<%= $next->thumb() %>"/>
+              <p><span>Next</span></p>
             </div>
           </a>
         </div>
       % }
 
-      % if ($next) {
-        <div class="row" style="height: 150px">
-          <a href="<%= $next->url() %>">
-            <div class="span3 thumb-height coxify-image">
-              <img class="center" src="<%= $next->thumb() %>"/>
-              <p><span>Next</span></p>
+      % if ($previous) {
+        <div class="row thumb-height">
+          <a href="<%= $previous->url() %>">
+            <div class="span3 coxify-image">
+              <img class="center" src="<%= $previous->thumb() %>"/>
+              <p><span>Previous</span></p>
             </div>
           </a>
         </div>
