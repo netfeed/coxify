@@ -16,7 +16,7 @@
           <a href="<%= $previous->url() %>">
             <div class="span3 thumb-height coxify-image">
               <img class="center" src="<%= $previous->thumb() %>"/>
-                <p><span>Previous</span></p>
+              <p><span>Previous</span></p>
             </div>
           </a>
         </div>
@@ -27,9 +27,7 @@
           <a href="<%= $next->url() %>">
             <div class="span3 thumb-height coxify-image">
               <img class="center" src="<%= $next->thumb() %>"/>
-              <div class="fancy-label">
-                <p><span>Next</span></p>
-              </div>
+              <p><span>Next</span></p>
             </div>
           </a>
         </div>
