@@ -206,6 +206,9 @@ sub add {
     original_url => $in->{url},
     user => $in->{user},
     channel_id => $channel->id,
+    created_date => DateTime->now->ymd,
+    created_time => DateTime->now->hms,
+    updated => DateTime->now,
     active => scalar(@{ $images }) ? 0 : 1,
   );
 
