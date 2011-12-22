@@ -2,3 +2,26 @@
   margin: 0 auto;
   display: block;
 }
+
+.coxify-image {
+  position: relative;
+}
+
+.coxify-image p {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 100%;
+}
+
+.coxify-image span {
+  color: white;
+  letter-spacing: -1px;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+.thumb-height {
+  height: 145px;
+}

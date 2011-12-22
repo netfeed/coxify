@@ -132,7 +132,7 @@ sub image {
       id => { lt => $self->stash('id') },
     ],
     sort_by => 'id DESC',
-    limit => '2'
+    limit => '1'
   );
 
   my $greater = Coxify::Model::Image::Manager->get_images(
@@ -141,7 +141,7 @@ sub image {
       id => { gt => $self->stash('id') },
     ],
     sort_by => 'id ASC',
-    limit => '2',
+    limit => '1',
   );
 
   $self->stash(image => $image);
@@ -153,8 +153,11 @@ sub image {
     { title => "Image #" . $image->id }
   ]);
 
-  my @thumbs = sort { $a->id <=> $b->id } (@{ $lesser }, $image, @{ $greater });
-  $self->stash(thumbs => [ @thumbs ]); 
+  my $previous = $greater ? $greater->[0] : undef;
+  my $next = $lesser ? $lesser->[0] : undef;
+
+  $self->stash(previous => $previous);
+  $self->stash(next => $next);
 
   $self->render
 }
