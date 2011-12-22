@@ -4,6 +4,7 @@
   <div class="row">
     <div class="span12">
       <div class="row">
+        <h1 class="span12"><%= $images->[0]->created_date->month_name %></h1>
         % for my $i (0 .. (scalar(@$images) - 1)) {
           % if ($i % 4 == 0) {
             </div>
