@@ -27,8 +27,8 @@ sub index {
   my $images = Coxify::Model::Image::Manager->get_images(
     query => [
       active => 1,
-      created_date => $query->[0]->[0]
     ],
+    limit => 24,
     sort_by => 'id DESC',
   );
 
