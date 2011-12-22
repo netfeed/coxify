@@ -4,6 +4,7 @@ use strict;
 
 use base 'Mojolicious::Controller';
 
+use DateTime;
 use Coxify::Image;
 use Coxify::Model::Image;
 
@@ -24,6 +25,14 @@ sub index {
   my $dbh = $db->dbh;
   my $query = $dbh->selectall_arrayref($sql, {}, @{ $binds });
 
+  my $iso_date = $query->[0]->[0];
+  my ($y, $m, $d) = split(/-/, $iso_date);
+  my $to_date = DateTime->new(year => $y, month => $m, day => $d);
+  my $from_date = $to_date->clone->subtract(days => 7);
+
+  my $days = Coxify::Image::date_list(from => $from_date, to => $to_date, limit => 7);
+  $self->stash(dates => $days);
+
   my $images = Coxify::Model::Image::Manager->get_images(
     query => [
       active => 1,
@@ -32,7 +41,7 @@ sub index {
     sort_by => 'id DESC',
   );
 
-  my $year_list = Coxify::Image::year_list($self->stash('year'));
+  my $year_list = Coxify::Image::year_list();
 
   my %years = ();
   for my $month (@{ $year_list }) {

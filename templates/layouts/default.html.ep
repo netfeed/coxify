@@ -8,6 +8,8 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
     <script type="text/javascript">
 
       var _gaq = _gaq || [];
@@ -20,6 +22,17 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $('a[id^="year-"]').each(function() {
+          var year = parseInt(this.id.replace("year-", ""));
+          $("#year-" + year).click(function () {
+            $("#year-ul-" + year).toggle();
+          });
+        });
+      });
     </script>
 
   </head>

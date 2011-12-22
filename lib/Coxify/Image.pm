@@ -6,16 +6,17 @@ use Coxify::Db;
 use Coxify::Model::Image;
 
 sub date_list {
-  my ($from_date, $to_date) = @_;
+  my %p = @_;
 
   my ($sql, $binds) = Coxify::Model::Image::Manager->get_objects_sql(
     select => ['created_date', 'COUNT(t1.created_date)'],
     where => [
       active => 1,
-      created_date => { gt_le => [ $from_date, $to_date ] }
+      created_date => { gt_le => [ $p{from}, $p{to} ] }
     ],
     sort_by => 'created_date ASC',
-    group_by => 'created_date'
+    group_by => 'created_date',
+    $p{limit} ? (limit => $p{limit}) : (),
   );
 
   my $db = new Coxify::Db();
