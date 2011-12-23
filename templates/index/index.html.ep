@@ -37,16 +37,7 @@
       </div>
       <div class="row">
         <div class="span4">
-          <ul>
-            % for my $year (reverse(sort { $a <=> $b } keys %{ $years })) {
-              <li><a href="/image/<%= $year %>"><%= $year %></a> [ <a href="#" id="year-<%= $year %>">+</a> ]</li>
-              <ul id="year-ul-<%= $year %>" style="display: none">
-                % for my $month (reverse(sort { $a->{month} <=> $b->{month} } @{ $years->{$year} })) {
-                  <li><a href="<%= $month->{url} %>"><%= $month->{month}->month_name %></a> (<%= $month->{count} %>)</li>
-                % }
-              </ul>
-            % }
-          </ul>
+          %= include 'partial/year_list', show_year => 0, year => undef
         </div>
       </div>
     </div>

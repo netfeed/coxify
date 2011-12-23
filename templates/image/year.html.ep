@@ -27,7 +27,7 @@
     <div class="span4">
       <div class="row">
         <div class="span4">
-          %= include 'partial/year_list'
+          %= include 'partial/year_list', show_year => 1
         </div>
       </div>
     </div>
