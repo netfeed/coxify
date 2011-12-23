@@ -24,12 +24,16 @@
         % }
       </div>
     </div>
-    <div class="span4"> 
-      <ul>
-        % for my $date (@{ $year_list }) {
-          <li><a href="<%= $date->{url} %>"><%= $date->{month}->month_name %></a> (<%= $date->{count} %>)</li>
-        % }
-      </ul>
+    <div class="span4">
+      <div class="row">
+        <div class="span4">
+          <ul>
+            % for my $date (@{ $year_list }) {
+              <li><a href="<%= $date->{url} %>"><%= $date->{month}->month_name %></a> (<%= $date->{count} %>)</li>
+            % }
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>

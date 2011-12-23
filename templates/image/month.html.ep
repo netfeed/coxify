@@ -25,11 +25,15 @@
       </div>
     </div>
     <div class="span4"> 
-      <ul>
-        % for my $date (@{ $dates }) {
-          <li><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>
-        % }
-      </ul>
+      <div class="row">
+        <div class="span4">
+          <ul>
+            % for my $date (@{ $dates }) {
+              <li><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>
+            % }
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
