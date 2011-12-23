@@ -167,14 +167,6 @@ sub image {
   $self->stash(previous => $previous);
   $self->stash(next => $next);
 
-  my $count = Coxify::Model::Image::Manager->get_images_count(
-    query => [
-      md5 => $image->md5
-    ]
-  );
-
-  $self->stash(count => $count);
-
   $self->render
 }
 

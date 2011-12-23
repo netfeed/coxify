@@ -32,12 +32,6 @@
           </a>
         </div>
       % }
-
-      <div class="row">
-        <div clas="span4">
-          <p>This image has been linked <%= $count %> time<%= $count > 1 ? 's' : '' %></p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
