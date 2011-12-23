@@ -69,6 +69,9 @@ sub month {
 
   $self->stash(images => $images);
 
+  my $year_list = Coxify::Image::year_list($self->stash('year'));
+  $self->stash(year_list => $year_list);
+
   $self->stash(breadcrumbs => [ 
     { path => '/', title => 'Home' },
     { path => '/image/' . $from_date->year, title => $from_date->year },
