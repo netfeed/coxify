@@ -27,7 +27,11 @@
     <div class="span4"> 
       <ul>
         % for my $date (@{ $dates }) {
-          <li><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>
+          % if ($images->[0]->created_date->ymd eq $date->{date}) {
+            <li><b><%= $date->{date} %></b> (<%= $date->{count} %>)</li>
+          % } else {
+            <li><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>
+          % }
         % }
       </ul>
     </div>
