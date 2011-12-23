@@ -72,9 +72,13 @@ sub year_list {
     };   
   }
 
-  @year = reverse sort({ $a->{month} <=> $b->{month} } @year);
+  my %years = ();
+  for my $month (@year) {
+    $years{$month->{month}->year} = [] unless $years{$month->{month}->year};
+    push @{ $years{$month->{month}->year} }, $month;
+  }
 
-  return \@year;
+  return \%years;
 }
 
 1;

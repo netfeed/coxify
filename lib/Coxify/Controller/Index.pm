@@ -41,15 +41,8 @@ sub index {
     sort_by => 'id DESC',
   );
 
-  my $year_list = Coxify::Image::year_list();
-
-  my %years = ();
-  for my $month (@{ $year_list }) {
-    $years{$month->{month}->year} = [] unless $years{$month->{month}->year};
-    push @{ $years{$month->{month}->year} }, $month;
-  }
-
-  $self->stash(years => \%years);
+  my $years = Coxify::Image::year_list();
+  $self->stash(years => $years);
 
   $self->stash(images => $images);
   $self->stash(breadcrumbs => [ { path => '/', title => 'Home' }]);

@@ -39,12 +39,8 @@ sub year {
 
   my $year_list = Coxify::Image::year_list();
 
-  my %years = ();
-  for my $month (@{ $year_list }) {
-    $years{$month->{month}->year} = [] unless $years{$month->{month}->year};
-    push @{ $years{$month->{month}->year} }, $month;
-  }
-  $self->stash(years => \%years);
+  my $years = Coxify::Image::year_list();
+  $self->stash(years => $years);
 
   $self->stash(breadcrumbs => [ 
     { path => '/', title => 'Home' },
@@ -75,14 +71,8 @@ sub month {
 
   $self->stash(images => $images);
 
-  my $year_list = Coxify::Image::year_list();
-
-  my %years = ();
-  for my $month (@{ $year_list }) {
-    $years{$month->{month}->year} = [] unless $years{$month->{month}->year};
-    push @{ $years{$month->{month}->year} }, $month;
-  }
-  $self->stash(years => \%years);
+  my $years = Coxify::Image::year_list();
+  $self->stash(years => $years);
 
   $self->stash(breadcrumbs => [ 
     { path => '/', title => 'Home' },
@@ -117,14 +107,8 @@ sub day {
     sort_by => 'id DESC',
   );
 
-  my $year_list = Coxify::Image::year_list();
-
-  my %years = ();
-  for my $month (@{ $year_list }) {
-    $years{$month->{month}->year} = [] unless $years{$month->{month}->year};
-    push @{ $years{$month->{month}->year} }, $month;
-  }
-  $self->stash(years => \%years);
+  my $years = Coxify::Image::year_list();
+  $self->stash(years => $years);
 
   $self->stash(breadcrumbs => [ 
     { path => '/', title => 'Home' },
