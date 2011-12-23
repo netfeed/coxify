@@ -37,8 +37,6 @@ sub year {
 
   $self->stash(images => $images);
 
-  my $year_list = Coxify::Image::year_list();
-
   my $years = Coxify::Image::year_list();
   $self->stash(years => $years);
 
