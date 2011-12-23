@@ -1,0 +1,14 @@
+<ul>
+  % for my $y (reverse(sort { $a <=> $b } keys %{ $years })) {
+    <li><a href="/image/<%= $y %>"><%= $y %></a> [ <a href="#" id="year-<%= $y %>">+</a> ]</li>
+    % if ($year != $y) {
+      <ul id="year-ul-<%= $y %>" style="display: none">
+    % } else {
+      <ul id="year-ul-<%= $y %>">      
+    % }
+      % for my $month (reverse(sort { $a->{month} <=> $b->{month} } @{ $years->{$year} })) {
+        <li><a href="<%= $month->{url} %>"><%= $month->{month}->month_name %></a> (<%= $month->{count} %>)</li>
+      % }
+    </ul>
+  % }
+</ul>
