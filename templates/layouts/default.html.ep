@@ -30,6 +30,11 @@
             $("#year-ul-" + year).toggle();
           });
         });
+
+        $('#show-days').click(function () {
+          $('.day-hide').toggle();
+          $(this).remove();
+        });
       });
     </script>
 

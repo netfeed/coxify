@@ -28,8 +28,19 @@
       <div class="row">
         <div class="span4">
           <ul>
+            % my $counter = 0;
             % for my $date (@{ $dates }) {
-              <li><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>
+              % if ($counter < 7) {
+                <li><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>  
+              % } else {
+                <li style="display: none" class="day-hide"><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>  
+              % }
+              
+              % $counter++;
+            % }
+
+            % if (scalar(@{ $dates }) > 7) {
+              <a href="#" id="show-days">Show the rest of <%= $images->[0]->{created_date}->month_name %></a>
             % }
           </ul>
         </div>
