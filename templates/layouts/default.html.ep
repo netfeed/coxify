@@ -8,6 +8,8 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
+    <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="All images (Atom)" />
+
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 
     <script>
