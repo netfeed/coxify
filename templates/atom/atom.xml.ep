@@ -18,8 +18,13 @@
       <title><%= $image->id %></title>
       <link href="http://www.coxify.com<%= $image->url() %>" />
       <id>tag:www.coxify.com,<%= $image->created_date->ymd %>:<%= $image->url() %></id>
+      <published><%= $image->updated %></published>
       <updated><%= $image->updated %></updated>
-      <content type="xhtml"><a href="http://www.coxify.com<%= $image->url() %>"><img src="<%= $image->thumb() %>"/></a></content>
+      <content type="html">
+          &lt;a href="http://www.coxify.com<%= $image->url() %>"&gt;
+            &lt;img src="<%= $image->thumb() %>"/&gt;
+          &lt;/a&gt;
+      </content>
     </entry>    
   % }
 </feed>
