@@ -25,15 +25,25 @@
       </div>
     </div>
     <div class="span4"> 
-      <ul>
-        % for my $date (@{ $dates }) {
-          % if ($images->[0]->created_date->ymd eq $date->{date}) {
-            <li><b><%= $date->{date} %></b> (<%= $date->{count} %>)</li>
-          % } else {
-            <li><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>
-          % }
-        % }
-      </ul>
+      <div class="row">
+        <div class="span4">
+          <ul>
+            % for my $date (@{ $dates }) {
+              % my $style = !$date->{show} ? 'display: none' : '';
+              % my $class = !$date->{show} ? 'day-hide' : '';
+
+              % if ($images->[0]->created_date->ymd eq $date->{date}) {
+                <li $style><b><%= $date->{date} %></b> (<%= $date->{count} %>)</li>
+              % } else {
+                <li style="<%= $style %>" class="<%= $class %>"><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>
+              % }
+            % }
+            % if (scalar(@{ $dates }) > 7) {
+              <a href="#" id="show-days">View all days for <%= $images->[0]->{created_date}->month_name %></a>
+            % }
+          </ul>
+        </div>
+      </div>
       <div class="row">
         <div class="span4">
           %= include 'partial/year_list', show_year => 1

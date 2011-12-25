@@ -24,12 +24,27 @@ sub date_list {
   my $query = $dbh->selectall_arrayref($sql, {}, @{ $binds });
 
   my @dates = ();
-  for my $date (@{ $query }) {
+  my $idx = -1;
+
+  for my $i (0 .. scalar(@{ $query })-1) {
+    my $date = $query->[$i];
+
+    $idx = $i if ($p{today} && $p{today}->ymd eq $date->[0]);
+
     push @dates, {
       date => $date->[0],
       count => $date->[1],
       url => join("/", "/image", split(/-/, $date->[0])),
     };
+  }
+
+  my $lower = $idx > 2 ? $idx - 2 : 0;
+  my $higher = $lower + 6;
+
+  for my $i ($lower..$higher) {
+    last unless $p{today};
+    last unless @dates[$i];
+    @dates[$i]->{show} = 1;
   }
 
   return \@dates;
