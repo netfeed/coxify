@@ -14,7 +14,7 @@ sub date_list {
       active => 1,
       created_date => { gt_le => [ $p{from}, $p{to} ] }
     ],
-    sort_by => 'created_date ASC',
+    sort_by => 'created_date DESC',
     group_by => 'created_date',
     $p{limit} ? (limit => $p{limit}) : (),
   );
@@ -31,8 +31,6 @@ sub date_list {
       url => join("/", "/image", split(/-/, $date->[0])),
     };
   }
-
-  @dates = reverse @dates;
 
   return \@dates;
 }
