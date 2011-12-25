@@ -40,7 +40,7 @@
             % }
 
             % if (scalar(@{ $dates }) > 7) {
-              <a href="#" id="show-days">Show the rest of <%= $images->[0]->{created_date}->month_name %></a>
+              <a href="#" id="show-days">View all from <%= $images->[0]->{created_date}->month_name %></a>
             % }
           </ul>
         </div>
