@@ -13,7 +13,7 @@ sub atom {
     where => [
       active => 1,
     ],
-    limit => 24,
+    limit => 30,
     sort_by => 'id DESC',
   );
 
