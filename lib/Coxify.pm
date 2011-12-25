@@ -16,6 +16,8 @@ sub startup {
   $r->route('/image/:year/:month')->to("image#month");
   $r->route('/image/:year/:month/:day')->to("image#day");
   $r->route('/image/:year/:month/:day/:id')->to("image#image");
+
+  $r->route('/atom')->to('atom#atom');
 }
 
 1;

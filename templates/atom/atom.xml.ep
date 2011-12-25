@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Coxify</title>
+  <subtitle>Remember everythin.</subtitle>
+  <link href="http://www.coxify.com/atom.xml" rel="self" />
+  <link href="http://www.coxify.com/" />
+  <updated>
+    <%= $images->[0]->updated %>
+  </updated>
+  <id>tag:www.coxify.com</id>
+  <author>
+    <name>Coxify.com</name>
+  </author>
+
+  % for my $image (@{ $images }) {
+    <entry>
+      <title><%= $image->id %></title>
+      <link href="http://www.coxify.com<%= $image->url() %>" />
+      <id>tag:www.coxify.com,<%= $image->created_date->ymd %>:<%= $image->url() %></id>
+      <updated><%= $image->updated %></updated>
+      <content type="xhtml"><a href="http://www.coxify.com<%= $image->url() %>"><img src="<%= $image->thumb() %>"/></a></content>
+    </entry>    
+  % }
+</feed>
