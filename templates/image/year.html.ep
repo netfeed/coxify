@@ -30,6 +30,11 @@
           %= include 'partial/year_list', show_year => 1
         </div>
       </div>
+      <div class="row">
+        <div class="span4">
+          <a href="/atom.xml"><img src="/atom.png"/></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

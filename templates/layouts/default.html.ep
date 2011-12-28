@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Coxify</title>
+
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/coxify.css"/>
 
@@ -39,14 +40,17 @@
         });
       });
     </script>
-
   </head>
   <body>
     <div class="container">
       <div class="content">
         <div class="page-header">
-          <h1><a href="/" style="color: black">Coxify</a> <small>Remember everything</small></h1>
+          <h1>
+            <a href="/" style="color: black">Coxify</a> 
+            <small>Remember everything</small>
+          </h1>
         </div>
+
         <ul class="breadcrumb">
           % for my $i (0 .. (scalar(@{ $breadcrumbs }) - 1)) {
               % my $crumb = $breadcrumbs->[$i];
