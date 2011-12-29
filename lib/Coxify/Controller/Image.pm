@@ -117,7 +117,9 @@ sub day {
   ]);
 
   $self->stash(images => $images); 
-  $self->stash(facebook => { image => $images->[0], title => join(" ", $from_date->day, $from_date->month_name, $from_date->year) });
+
+  my $fb_date = $images->[0]->created_date;
+  $self->stash(facebook => { image => $images->[0], title => join(" ", $fb_date->day, $fb_date->month_name, $fb_date->year) });
 
   $self->render
 }
