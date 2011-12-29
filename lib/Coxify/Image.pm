@@ -12,7 +12,7 @@ sub date_list {
     select => ['created_date', 'COUNT(t1.created_date)'],
     where => [
       active => 1,
-      created_date => { gt_le => [ $p{from}, $p{to} ] }
+      created_date => { ge_le => [ $p{from}, $p{to} ] }
     ],
     sort_by => 'created_date DESC',
     group_by => 'created_date',

@@ -29,7 +29,7 @@ sub year {
   my $images = Coxify::Model::Image::Manager->get_images(
     query => [
       active => 1,
-      created_date => { gt_le => [ $from_date, $to_date ] }
+      created_date => { ge_le => [ $from_date, $to_date ] }
     ],
     limit => 24,
     sort_by => "id DESC",
@@ -61,7 +61,7 @@ sub month {
   my $images = Coxify::Model::Image::Manager->get_images(
     query => [
       active => 1,
-      created_date => { gt_le => [ $from_date, $to_date ] }
+      created_date => { ge_le => [ $from_date, $to_date ] }
     ],
     limit => 24,
     sort_by => "id DESC",
