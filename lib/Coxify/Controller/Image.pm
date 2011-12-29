@@ -36,6 +36,7 @@ sub year {
   );
 
   $self->stash(images => $images);
+  $self->stash(facebook => { image => $images->[0], title => "Year " . $from_date->year });
 
   my $years = Coxify::Image::year_list();
   $self->stash(years => $years);
@@ -68,6 +69,7 @@ sub month {
   );
 
   $self->stash(images => $images);
+  $self->stash(facebook => { image => $images->[0], title => join(" ", $from_date->month_name, $from_date->year) });
 
   my $years = Coxify::Image::year_list();
   $self->stash(years => $years);
@@ -115,6 +117,7 @@ sub day {
   ]);
 
   $self->stash(images => $images); 
+  $self->stash(facebook => { image => $images->[0], title => join(" ", $from_date->day, $from_date->month_name, $from_date->year) });
 
   $self->render
 }
@@ -150,6 +153,7 @@ sub image {
   );
 
   $self->stash(image => $image);
+  $self->stash(facebook => { image => $image, title => "#" . $image->id });
   $self->stash(breadcrumbs => [ 
     { path => '/', title => 'Home' },
     { path => '/image/' . $date->year, title => $date->year },

@@ -45,6 +45,7 @@ sub index {
   $self->stash(years => $years);
 
   $self->stash(images => $images);
+  $self->stash(facebook => { image => $images->[0] });
   $self->stash(breadcrumbs => [ { path => '/', title => 'Home' }]);
 
   $self->render;

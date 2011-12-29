@@ -40,6 +40,17 @@
         });
       });
     </script>
+
+    % if ($facebook) {
+      % if ($facebook->{title}) {
+        <meta property="og:title" content="Coxify - <%= $facebook->{title} %>" />  
+      % } else {
+        <meta property="og:title" content="Coxify" />
+      % }
+      
+      <meta property="og:description" content="Coxify is your friendly neighbourhood image aggregator" />
+      <meta property="og:image" content="<%= $facebook->{image}->thumb %>" />
+    % }
   </head>
   <body>
     <div class="container">
