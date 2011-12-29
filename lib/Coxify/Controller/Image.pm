@@ -171,9 +171,7 @@ sub add {
   my ($self) = @_;
   
   my $param = $self->param('json');
-  unless ($param) {
-    return $self->render(json => { error => 'missing parameter json'}, status => 400);
-  }
+  return $self->render(json => { error => 'missing parameter json'}, status => 400) unless $param;
 
   my $json = Mojo::JSON->new;;
   my $in = $json->decode($param);
