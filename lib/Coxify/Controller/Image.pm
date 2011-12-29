@@ -69,7 +69,7 @@ sub month {
   );
 
   $self->stash(images => $images);
-  $self->stash(facebook => { image => $images->[0], title => join(" ", $from_date->month_name, $from_date->year) });
+  $self->stash(facebook => { image => $images->[0], title => $from_date->strftime("%B %Y") });
 
   my $years = Coxify::Image::year_list();
   $self->stash(years => $years);
@@ -118,8 +118,7 @@ sub day {
 
   $self->stash(images => $images); 
 
-  my $fb_date = $images->[0]->created_date;
-  $self->stash(facebook => { image => $images->[0], title => join(" ", $fb_date->day, $fb_date->month_name, $fb_date->year) });
+  $self->stash(facebook => { image => $images->[0], title => $images->[0]->created_date->strftime("%B %d %Y") });
 
   $self->render
 }
