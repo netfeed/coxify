@@ -169,6 +169,11 @@ sub image {
   $self->stash(previous => $previous);
   $self->stash(next => $next);
 
+  my $from_date = new DateTime(year => $self->stash('year'), month => $self->stash('month'), day => '01');
+  my $to_date = DateTime->last_day_of_month(year => $self->stash('year'), month => $self->stash('month'));
+  my $dates = Coxify::Image::date_list(from => $from_date, to => $to_date, today => $date);
+  $self->stash(dates => $dates);  
+
   $self->render
 }
 

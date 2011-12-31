@@ -34,6 +34,21 @@
       % }
       <div class="row">
         <div class="span4">
+          <ul>
+            % for my $date (@{ $dates }) {
+              % my $style = !$date->{show} ? 'display: none' : '';
+              % my $class = !$date->{show} ? 'day-hide' : '';
+
+              <li style="<%= $style %>" class="<%= $class %>"><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>
+            % }
+            % if (scalar(@{ $dates }) > 7) {
+              <a href="#" id="show-days">View all days for <%= $image ->{created_date}->month_name %></a>
+            % }
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4">
           <a href="/atom.xml"><img src="/atom.png"/></a>
         </div>
       </div>
