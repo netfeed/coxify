@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Coxify</title>
+    % if ($facebook && $facebook->{title}) {
+      <title>Coxify - <%= $facebook->{title} %></title>
+    % } else {
+      <title>Coxify</title>
+    % }
 
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/coxify.css"/>
