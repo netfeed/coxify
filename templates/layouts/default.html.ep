@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    % if ($facebook && $facebook->{title}) {
-      <title>Coxify - <%= $facebook->{title} %></title>
+    % if ($meta_data && $meta_data->{title}) {
+      <title>Coxify - <%= $meta_data->{title} %></title>
     % } else {
       <title>Coxify</title>
     % }
@@ -45,15 +45,15 @@
       });
     </script>
 
-    % if ($facebook) {
-      % if ($facebook->{title}) {
-        <meta property="og:title" content="Coxify - <%= $facebook->{title} %>" />  
+    % if ($meta_data) {
+      % if ($meta_data->{title}) {
+        <meta property="og:title" content="Coxify - <%= $meta_data->{title} %>" />  
       % } else {
         <meta property="og:title" content="Coxify" />
       % }
       
       <meta property="og:description" content="Coxify is your friendly neighbourhood image aggregator" />
-      <meta property="og:image" content="<%= $facebook->{image}->thumb %>" />
+      <meta property="og:image" content="<%= $meta_data->{image}->thumb %>" />
     % }
   </head>
   <body>
