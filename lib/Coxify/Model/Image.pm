@@ -43,6 +43,8 @@ __PACKAGE__->meta->make_manager_class('images');
 
 sub init_db { Coxify::Db->new }
 
+sub manager { return (ref($_[0]) || $_[0]) . '::Manager' }
+
 sub thumb {
   my $self = shift;
   my %p = @_;
@@ -81,6 +83,36 @@ sub url {
   my ($self) = @_;
 
   return join('/', "/image", $self->created_date->ymd('/'), $self->id);
+}
+
+sub previous {
+  my ($self) = @_;
+
+  my $image = $self->manager->get_images(
+    query => [
+      active => 1,
+      id => { gt => $self->id },
+    ],
+    sort_by => 'id ASC',
+    limit => '1',
+  );
+
+  return $image->[0];
+}
+
+sub next {
+  my ($self) = @_;
+
+  my $image = $self->manager->get_images(
+    query => [
+      active => 1,
+      id => { lt => $self->id },
+    ],
+    sort_by => 'id DESC',
+    limit => '1'
+  );
+
+  return $image->[0];
 }
 
 1;

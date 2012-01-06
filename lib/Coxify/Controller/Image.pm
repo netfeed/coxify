@@ -135,24 +135,6 @@ sub image {
   my $image = new Coxify::Model::Image(id => $self->stash('id'));
   $image->load();
 
-  my $lesser = Coxify::Model::Image::Manager->get_images(
-    query => [
-      active => 1,
-      id => { lt => $self->stash('id') },
-    ],
-    sort_by => 'id DESC',
-    limit => '1'
-  );
-
-  my $greater = Coxify::Model::Image::Manager->get_images(
-    query => [
-      active => 1,
-      id => { gt => $self->stash('id') },
-    ],
-    sort_by => 'id ASC',
-    limit => '1',
-  );
-
   $self->stash(image => $image);
   $self->stash(meta_data => { image => $image, title => "#" . $image->id });
   $self->stash(breadcrumbs => [ 
@@ -162,12 +144,6 @@ sub image {
     { path => join('/', '/image', $date->ymd('/')), title => $date->day },
     { title => "Image #" . $image->id }
   ]);
-
-  my $previous = $greater ? $greater->[0] : undef;
-  my $next = $lesser ? $lesser->[0] : undef;
-
-  $self->stash(previous => $previous);
-  $self->stash(next => $next);
 
   my $from_date = new DateTime(year => $self->stash('year'), month => $self->stash('month'), day => '01');
   my $to_date = DateTime->last_day_of_month(year => $self->stash('year'), month => $self->stash('month'));
