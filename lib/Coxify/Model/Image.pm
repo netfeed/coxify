@@ -57,7 +57,7 @@ sub medium {
   my $self = shift;
   my %p = @_;
 
-  $p{type} => $self->width <= 700 ? '' : 'm';
+  $p{type} = $self->width <= 700 ? '' : 'm';
   return $self->image(%p);
 }
 
