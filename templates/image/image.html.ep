@@ -5,7 +5,7 @@
     <div class="span12">
       &nbsp;
       % my $style = '';
-      % if ($image->width > 690) {
+      % if ($image->width > 650) {
       %   $style = 'style="width: 650px"';
       % }
       <img class="center" <%== $style %> src="<%= $image->medium %>"/>
