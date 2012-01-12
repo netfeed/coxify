@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    % if ($meta_data && $meta_data->{title}) {
-      <title>Coxify - <%= $meta_data->{title} %></title>
+    % if (stash('meta_data') && stash('meta_data')->{title}) {
+      <title>Coxify - <%= stash('meta_data')->{title} %></title>
     % } else {
       <title>Coxify</title>
     % }
@@ -45,15 +45,15 @@
       });
     </script>
 
-    % if ($meta_data) {
-      % if ($meta_data->{title}) {
-        <meta property="og:title" content="Coxify - <%= $meta_data->{title} %>" />  
+    % if (stash('meta_data')) {
+      % if (stash('meta_data')->{title}) {
+        <meta property="og:title" content="Coxify - <%= stash('meta_data')->{title} %>" />  
       % } else {
         <meta property="og:title" content="Coxify" />
       % }
       
       <meta property="og:description" content="Coxify is your friendly neighbourhood image aggregator" />
-      <meta property="og:image" content="<%= $meta_data->{image}->thumb %>" />
+      <meta property="og:image" content="<%= stash('meta_data')->{image}->thumb %>" />
     % }
   </head>
   <body>
@@ -66,19 +66,21 @@
           </h1>
         </div>
 
-        <ul class="breadcrumb">
-          % for my $i (0 .. (scalar(@{ $breadcrumbs }) - 1)) {
-              % my $crumb = $breadcrumbs->[$i];
-              <li>
-                % if ($i == scalar(@{$breadcrumbs}) - 1) {
-                  %= $crumb->{title}
-                % } else {
-                  <a href="<%= $crumb->{path} %>"><%= $crumb->{title} %></a>
-                  <span class="divider">/</span>
-                % } 
-              </li>
-          % }
-        </ul>
+        % if (stash('breadcrumbs')) {
+          <ul class="breadcrumb">
+            % for my $i (0 .. (scalar(@{ stash('breadcrumbs') }) - 1)) {
+                % my $crumb = stash('breadcrumbs')->[$i];
+                <li>
+                  % if ($i == scalar(@{stash('breadcrumbs')}) - 1) {
+                    %= $crumb->{title}
+                  % } else {
+                    <a href="<%= $crumb->{path} %>"><%= $crumb->{title} %></a>
+                    <span class="divider">/</span>
+                  % } 
+                </li>
+            % }
+          </ul>
+        % }
         <%= content %>
       </div>
     </div>
