@@ -134,6 +134,7 @@ sub image {
 
   my $image = new Coxify::Model::Image(id => $self->stash('id'));
   $image->load();
+  $self->render_not_found if !$image || !$image->active;
 
   $self->stash(image => $image);
   $self->stash(meta_data => { image => $image, title => "#" . $image->id });

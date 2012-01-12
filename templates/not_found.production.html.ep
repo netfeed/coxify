@@ -1,0 +1,11 @@
+% layout 'default';
+
+<div class="row">
+  <div class="span16">
+    <h1>404 - Sorry bud, not found</h1>
+
+    <h2>Here's a link back to the <a href="/">index</a>!</h2>
+
+    <center><img src="/404.jpg"/></center>
+  </div>
+</div>
