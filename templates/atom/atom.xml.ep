@@ -2,7 +2,7 @@
  
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Coxify</title>
-  <subtitle>Remember everythin.</subtitle>
+  <subtitle>Remember everything.</subtitle>
   <link href="http://www.coxify.com/atom.xml" rel="self" />
   <link href="http://www.coxify.com/" />
   <updated>
