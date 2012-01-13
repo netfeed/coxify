@@ -6,7 +6,9 @@ sub startup {
   my $self = shift;
   
   my $mode = $ENV{MOJO_MODE} || 'development'; # should be set for hypnotoad
-  $self->plugin('JSONConfig' => { file => "config/coxify." . $mode . ".json" });
+  my $config = $self->plugin('JSONConfig' => { file => "config/coxify." . $mode . ".json" });
+
+  $self->secret($config->{secret});
 
   # Routes
   my $r = $self->routes;
