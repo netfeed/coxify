@@ -4,6 +4,9 @@ use Mojo::Base 'Mojolicious';
 # This method will run once at server start
 sub startup {
   my $self = shift;
+  
+  my $mode = $ENV{MOJO_MODE} || 'development'; # should be set for hypnotoad
+  $self->plugin('JSONConfig' => { file => "config/coxify." . $mode . ".json" });
 
   # Routes
   my $r = $self->routes;
