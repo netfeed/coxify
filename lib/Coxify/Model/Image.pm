@@ -97,7 +97,7 @@ sub previous {
     limit => '1',
   );
 
-  return $image->[0];
+  return shift @{ $image };
 }
 
 sub next {
@@ -112,7 +112,7 @@ sub next {
     limit => '1'
   );
 
-  return $image->[0];
+  return shift @{ $image };
 }
 
 1;
