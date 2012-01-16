@@ -5,8 +5,7 @@ use Mojo::Base 'Mojolicious';
 sub startup {
   my $self = shift;
   
-  my $mode = $ENV{MOJO_MODE} || 'development'; # should be set for hypnotoad
-  my $config = $self->plugin('JSONConfig' => { file => "config/coxify." . $mode . ".json" });
+  my $config = $self->plugin('JSONConfig' => { file => "config/config.json" });
 
   $self->secret($config->{secret});
 
