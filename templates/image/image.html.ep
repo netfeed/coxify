@@ -8,7 +8,9 @@
       % if ($image->width > 650) {
       %   $style = 'style="width: 650px"';
       % }
-      <img class="center" <%== $style %> src="<%= $image->medium %>"/>
+      <a href="<%= $image->image %>" class="colorbox">
+        <img class="center" <%== $style %> src="<%= $image->medium %>"/>
+      </a>
     </div>
     <div class="span4"> 
       % if ($image->next) {
