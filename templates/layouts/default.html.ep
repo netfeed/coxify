@@ -85,6 +85,7 @@
         % }
         <%= content %>
       </div>
+      <div style="padding-top: 25px">&nbsp;</div>
     </div>
   </body>
 </html>
