@@ -154,6 +154,25 @@ sub image {
   $self->render
 }
 
+sub thousand {
+  my ($self) = @_;
+
+  my $images = Coxify::Model::Image::Manager->get_objects_from_sql(qq|
+    SELECT * FROM images WHERE id % 1000 = 0 AND active ORDER BY id ASC;
+  |);
+
+  $self->stash(breadcrumbs => [ 
+    { path => '/', title => 'Home' },
+    { title => "Thousand" }
+  ]);
+
+  my $years = Coxify::Image::year_list();
+  $self->stash(years => $years);
+  $self->stash(images => $images);
+  
+  $self->render;
+}
+
 sub add {
   my ($self) = @_;
   

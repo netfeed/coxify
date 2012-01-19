@@ -1,10 +1,10 @@
-% layout 'default';
+%layout 'default';
 
 <section>
   <div class="row">
     <div class="span12">
       <div class="row">
-        <h1 class="span12">Latest images</h1>
+        <h1 class="span12">All even thousand images</h1>
         % for my $i (0 .. (scalar(@$images) - 1)) {
           % if ($i % 4 == 0) {
             </div>
@@ -27,24 +27,7 @@
     <div class="span4"> 
       <div class="row">
         <div class="span4">
-          <h2>Last 7 days</h2>
-          <ul>
-            % for my $date (@{ $dates }) {
-              <li><a href="<%= $date->{url} %>"><%= $date->{date} %></a> (<%= $date->{count} %>)</li>
-            % }
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span4">
           %= include 'partial/year_list', show_year => 0, year => undef
-        </div>
-      </div>
-      <div class="row">
-        <div class="span4">
-          <ul>
-            <li><a href="/thousand">Thousand</a></li>
-          </ul>
         </div>
       </div>
       <div class="row">
