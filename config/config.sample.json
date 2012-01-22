@@ -1,4 +1,11 @@
 {
   "google_analytics" : "",
-  "secret" : ""
+  "secret" : "",
+  "image_domain" : "",
+  
+  "driver" : "pg",
+  "database" : "coxify",
+  "host" : "localhost",
+  "username" : "coxify",
+  "password" : ""
 }

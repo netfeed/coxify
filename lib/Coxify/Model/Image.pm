@@ -2,13 +2,12 @@ package Coxify::Model::Image;
 
 use strict;
 
+use base 'Coxify::Model';
+
 use File::Basename;
 use DateTime;
 
-use Coxify::Db;
 use Coxify::Model::Channel;
-
-use base qw(Rose::DB::Object);
 
 __PACKAGE__->meta->setup (
   table   => 'images',
@@ -41,10 +40,6 @@ __PACKAGE__->meta->setup (
 
 __PACKAGE__->meta->make_manager_class('images');
 
-sub init_db { Coxify::Db->new }
-
-sub manager { return (ref($_[0]) || $_[0]) . '::Manager' }
-
 sub thumb {
   my $self = shift;
   my %p = @_;
@@ -71,7 +66,7 @@ sub image {
   my ($ftype) = ($self->original_url =~ /.*\.(.*)$/);
 
   return join('/', 
-    $domain ? 'http://images.coxify.com' : '', 
+    $domain ? $self->config('image_domain') : '', 
     $self->channel->network_id, 
     $self->channel_id, 
     $self->created_date->ymd('/'), 

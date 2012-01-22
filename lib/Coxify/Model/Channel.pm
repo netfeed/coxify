@@ -2,9 +2,7 @@ package Coxify::Model::Channel;
 
 use strict;
 
-use Coxify::Db;
-
-use base qw(Rose::DB::Object);
+use base 'Coxify::Model';
 
 __PACKAGE__->meta->setup(
   table   => 'channels',
@@ -20,7 +18,5 @@ __PACKAGE__->meta->setup(
 );
 
 __PACKAGE__->meta->make_manager_class('channels');
-
-sub init_db { Coxify::Db->new }
 
 1;

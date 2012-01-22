@@ -2,9 +2,7 @@ package Coxify::Model::Network;
 
 use strict;
 
-use Coxify::Db;
-
-use base qw(Rose::DB::Object);
+use base 'Coxify::Model';
 
 __PACKAGE__->meta->setup(
   table   => 'networks',
@@ -25,6 +23,4 @@ __PACKAGE__->meta->setup(
 
 __PACKAGE__->meta->make_manager_class('networks');
 
-sub init_db { Coxify::Db->new }
-  
 1;
