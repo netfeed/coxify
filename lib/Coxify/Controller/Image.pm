@@ -137,6 +137,9 @@ sub image {
   $self->render_not_found if !$image || !$image->active;
 
   $self->stash(image => $image);
+  $self->stash(prev_page => $image->previous->url) if $image->previous;
+  $self->stash(next_page => $image->next->url) if $image->next;
+
   $self->stash(meta_data => { image => $image, title => "#" . $image->id });
   $self->stash(breadcrumbs => [ 
     { path => '/', title => 'Home' },

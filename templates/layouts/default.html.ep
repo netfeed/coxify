@@ -18,6 +18,15 @@
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/js/jquery.colorbox.js"></script>
+    <script src="/js/jquery.jkey.js"></script>
+
+    % if (stash('next_page')) {
+      <meta name="coxify-next" id="coxify-next" content="<%= stash('next_page') %>"/>
+    % }
+
+    % if (stash('prev_page')) {
+      <meta name="coxify-next" id="coxify-prev" content="<%= stash('prev_page') %>"/>
+    % }
 
     % if (config('google_analytics')) {
       <script>
@@ -34,7 +43,7 @@
     % }
 
     <script>
-      $(document).ready(function () {
+      $(document).ready(function() {
         $('a[id^="year-"]').each(function() {
           var year = parseInt(this.id.replace("year-", ""));
           $("#year-" + year).click(function () {
@@ -42,13 +51,27 @@
           });
         });
 
-        $('#show-days').click(function () {
+        $('#show-days').click(function() {
           $('.day-hide').toggle();
           $(this).remove();
         });
 
         $(".colorbox").colorbox({opacity: 0.85});
       });
+
+      % if (stash("next_page")) {
+        $(document).jkey('d, right', function() {
+          var next = $('#coxify-next');
+          window.location.href = next.attr('content');
+        });
+      % }
+
+      % if (stash("prev_page")) {
+        $(document).jkey('a, left', function() {
+          var prev = $('#coxify-prev');
+          window.location.href = prev.attr('content');
+        });
+      % }
     </script>
 
     % if (stash('meta_data')) {
