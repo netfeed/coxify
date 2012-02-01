@@ -7,7 +7,7 @@
       <ul id="year-ul-<%= $y %>" style="display: none">
     % }
       % for my $month (reverse(sort { $a->{month} <=> $b->{month} } @{ $years->{$y} })) {
-        <li><a href="<%= $month->{url} %>"><%= $month->{month}->month_name %></a> (<%= $month->{count} %>)</li>
+        <li><a href="<%= $month->{url} %>"><%= $month->{month}->month_name %></a></li>
       % }
     </ul>
   % }

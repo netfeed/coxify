@@ -2,7 +2,7 @@
 
 <section>
   <div class="row">
-    <div class="span12">
+    <div class="span9">
       &nbsp;
       % my $style = '';
       % if ($image->width > 650) {
@@ -12,7 +12,7 @@
         <img class="center" <%== $style %> src="<%= $image->medium %>"/>
       </a>
     </div>
-    <div class="span4"> 
+    <div class="span3"> 
       % if ($image->next) {
         <div class="row">
           <a href="<%= $image->next->url() %>">
@@ -35,7 +35,7 @@
         </div>
       % }
       <div class="row">
-        <div class="span4">
+        <div class="span3">
           <ul>
             % for my $date (@{ $dates }) {
               % my $style = !$date->{show} ? 'display: none' : '';
@@ -50,7 +50,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="span4">
+        <div class="span3">
           <a href="/atom.xml"><img src="/atom.png"/></a>
         </div>
       </div>
