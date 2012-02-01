@@ -31,7 +31,7 @@ sub year {
       active => 1,
       created_date => { ge_le => [ $from_date, $to_date ] }
     ],
-    limit => 24,
+    limit => 25,
     sort_by => "id DESC",
   );
 
@@ -64,7 +64,7 @@ sub month {
       active => 1,
       created_date => { ge_le => [ $from_date, $to_date ] }
     ],
-    limit => 24,
+    limit => 25,
     sort_by => "id DESC",
   );
 
