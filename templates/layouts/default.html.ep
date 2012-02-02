@@ -97,14 +97,14 @@
 
         % if (stash('breadcrumbs')) {
           <ul class="breadcrumb">
-            % for my $i (0 .. (scalar(@{ stash('breadcrumbs') }) - 1)) {
-                % my $crumb = stash('breadcrumbs')->[$i];
+            % while (@{ stash('breadcrumbs') }) {
+                % my $crumb = shift @{ stash('breadcrumbs') };
                 <li>
-                  % if ($i == scalar(@{stash('breadcrumbs')}) - 1) {
-                    %= $crumb->{title}
-                  % } else {
+                  % if (@{ stash('breadcrumbs') }) {
                     <a href="<%= $crumb->{path} %>"><%= $crumb->{title} %></a>
                     <span class="divider">/</span>
+                  % } else {
+                    %= $crumb->{title}
                   % } 
                 </li>
             % }
