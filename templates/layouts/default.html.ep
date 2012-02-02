@@ -7,7 +7,7 @@
       <title>Coxify</title>
     % }
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css?1"/>
     <link rel="stylesheet" href="/css/coxify.css"/>
     <link rel="stylesheet" href="/css/colorbox.css"/>
 
