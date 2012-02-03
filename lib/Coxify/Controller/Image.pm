@@ -46,11 +46,7 @@ sub year {
     { path => '/image/' . $self->stash('year'), title => $self->stash('year') },
   ]);
 
-  if ($self->req->headers->header('X-PJAX')) {
-    $self->render_partial;
-  } else {
-    $self->render;
-  }
+  $self->render
 }
 
 sub month {
@@ -84,11 +80,7 @@ sub month {
     { path => join('/', '/image', $from_date->year, sprintf("%02d", $from_date->month)), title => $from_date->month_name },
   ]);
 
-  if ($self->req->headers->header('X-PJAX')) {
-    $self->render_partial;
-  } else {
-    $self->render;
-  }
+  $self->render
 }
 
 sub day {
@@ -128,11 +120,7 @@ sub day {
 
   $self->stash(meta_data => { image => $images->[0], title => $images->[0]->created_date->strftime("%B %d %Y") });
 
-  if ($self->req->headers->header('X-PJAX')) {
-    $self->render_partial;
-  } else {
-    $self->render;
-  }
+  $self->render
 }
 
 sub image {
@@ -166,11 +154,7 @@ sub image {
   my $dates = Coxify::Image::date_list(from => $from_date, to => $to_date, today => $date);
   $self->stash(dates => $dates);  
 
-  if ($self->req->headers->header('X-PJAX')) {
-    $self->render_partial;
-  } else {
-    $self->render;
-  }
+  $self->render
 }
 
 sub thousand {
@@ -189,11 +173,7 @@ sub thousand {
   $self->stash(years => $years);
   $self->stash(images => $images);
   
-  if ($self->req->headers->header('X-PJAX')) {
-    $self->render_partial;
-  } else {
-    $self->render;
-  }
+  $self->render;
 }
 
 sub add {

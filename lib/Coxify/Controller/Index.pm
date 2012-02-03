@@ -48,11 +48,7 @@ sub index {
   $self->stash(meta_data => { image => $images->[0] });
   $self->stash(breadcrumbs => [ { path => '/', title => 'Home' }]);
 
-  if ($self->req->headers->header('X-PJAX')) {
-    $self->render_partial;
-  } else {
-    $self->render;
-  }
+  $self->render;
 }
 
 1;
