@@ -19,6 +19,7 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/js/jquery.colorbox.js"></script>
     <script src="/js/jquery.jkey.js"></script>
+    <script src="/js/jquery.pjax.js"></script>
 
     % if (stash('next_page')) {
       <meta name="coxify-next" id="coxify-next" content="<%= stash('next_page') %>"/>
@@ -57,6 +58,10 @@
         });
 
         $(".colorbox").colorbox({opacity: 0.85});
+  
+        $('a').pjax('#main').live('click', function(){
+          $(this).showLoader()
+        });
       });
 
       % if (stash("next_page")) {
@@ -110,7 +115,10 @@
             % }
           </ul>
         % }
-        <%= content %>
+        <div id="main">
+          <div class='loader' style='display:none'><img src='/spinner.gif'></div>
+          <%= content %>
+        </div>
       </div>
       <div style="padding-top: 25px">&nbsp;</div>
     </div>
