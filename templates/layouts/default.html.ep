@@ -60,7 +60,7 @@
         $(".colorbox").colorbox({opacity: 0.85});
   
         $('a').pjax('#main').live('click', function(){
-          $(this).showLoader()
+          //$(this).showLoader();
         });
       });
 
