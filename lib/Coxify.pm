@@ -8,6 +8,13 @@ sub startup {
   my $config = $self->plugin('JSONConfig' => { file => "config/config.json" });
 
   $self->secret($config->{secret});
+  
+  $self->plugin(Oembed => [
+    {
+        scheme => 'http://*.flickr.com/*',
+        endpoint => 'http://www.flickr.com/services/oembed/'
+    }
+  ]);
 
   # Routes
   my $r = $self->routes;
@@ -20,6 +27,8 @@ sub startup {
   $r->route('/image/:year/:month')->to("image#month");
   $r->route('/image/:year/:month/:day')->to("image#day");
   $r->route('/image/:year/:month/:day/:id')->to("image#image");
+
+  $r->route('/oembed/lookup')->to('oembed#lookup');
 
   $r->route('/thousand')->to("image#thousand");
 
