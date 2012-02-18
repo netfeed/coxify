@@ -12,7 +12,7 @@ sub register {
   $self->{endpoints} = $endpoints;
   
   $app->helper(oembed => sub {
-    my ($app, $url) = @_;
+    my ($cls, $url) = @_;
     
     my $endpoint;
     for my $hsh (@{ $self->{endpoints} }) {
