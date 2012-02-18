@@ -13,7 +13,11 @@ sub startup {
     {
         scheme => 'http://*.flickr.com/*',
         endpoint => 'http://www.flickr.com/services/oembed/'
-    }
+    },
+    {
+      scheme => 'http://*.smugmug.com/*',
+      endpoint => 'http://api.smugmug.com/services/oembed/',
+    },
   ]);
 
   # Routes
