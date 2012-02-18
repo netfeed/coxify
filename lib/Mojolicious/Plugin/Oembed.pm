@@ -18,8 +18,7 @@ sub register {
     for my $hsh (@{ $self->{endpoints} }) {
       my $scheme = $hsh->{scheme};
       $scheme =~ s/\*/.*?/;
-      $endpoint = $hsh->{endpoint};
-      last;
+      $endpoint = $hsh->{endpoint} if $url =~ /$scheme/;;
     }
     
     return undef unless $endpoint;
@@ -28,7 +27,8 @@ sub register {
 
     my $ret;
     my $ua = Mojo::UserAgent->new;
-    $ua->get($location)->res->dom('url')->each(sub { $ret = $_->text; });
+    my $res = $ua->get($location)->res;
+    $res->dom('url')->each(sub { $ret = $_->text; });
 
     return $ret;
   });
