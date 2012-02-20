@@ -8,5 +8,8 @@
   "host" : "localhost",
   "username" : "coxify",
   "password" : "",
-  "facebook_admin" : ""
+  "facebook_admin" : "",
+  "hypnotoad" : {
+    "proxy" : 1
+  }
 }
