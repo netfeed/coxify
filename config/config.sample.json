@@ -7,5 +7,6 @@
   "database" : "coxify",
   "host" : "localhost",
   "username" : "coxify",
-  "password" : ""
+  "password" : "",
+  "facebook_admin" : ""
 }

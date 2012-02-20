@@ -46,6 +46,7 @@
       <div class="row">
         <div class="span2">
           <a href="/atom.xml"><img src="/atom.png"/></a>
+          <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="true"></div>
         </div>
       </div>
     </div>
