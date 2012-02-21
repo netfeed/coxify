@@ -27,10 +27,10 @@ sub startup {
   $r->route('/')->to("index#index");
   $r->route('/image')->to("image#main");
   $r->route('/image/add')->via('POST')->to("image#add");
-  $r->route('/image/:year', year => qr/\d+/)->to("image#year");
-  $r->route('/image/:year/:month')->to("image#month");
-  $r->route('/image/:year/:month/:day')->to("image#day");
-  $r->route('/image/:year/:month/:day/:id')->to("image#image");
+  $r->route('/image/:year', year => qr/\d{4}/)->to("image#year");
+  $r->route('/image/:year/:month', year => qr/\d{4}/, month => qr/\d{2}/)->to("image#month");
+  $r->route('/image/:year/:month/:day', year => qr/\d{4}/, month => qr/\d{2}/, day => qr/\d{2}/)->to("image#day");
+  $r->route('/image/:year/:month/:day/:id', year => qr/\d{4}/, month => qr/\d{2}/, day => qr/\d{2}/, id => qr/\d*/)->to("image#image");
 
   $r->route('/oembed/lookup')->to('oembed#lookup');
 
