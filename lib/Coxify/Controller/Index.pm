@@ -37,7 +37,7 @@ sub index {
     query => [
       active => 1,
     ],
-    limit => 25,
+    limit => 35,
     sort_by => 'id DESC',
   );
 
