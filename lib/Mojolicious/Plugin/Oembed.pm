@@ -18,7 +18,10 @@ sub register {
     for my $hsh (@{ $self->{endpoints} }) {
       my $scheme = $hsh->{scheme};
       $scheme =~ s/\*/.*?/;
-      $endpoint = $hsh->{endpoint} if $url =~ /$scheme/;;
+      if ($url =~ /$scheme/) {
+        $endpoint = $hsh->{endpoint};
+        last;
+      }
     }
     
     return undef unless $endpoint;
