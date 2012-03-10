@@ -1,6 +1,6 @@
 <ul>
   % for my $y (reverse(sort { $a <=> $b } keys %{ $years })) {
-    <li><a href="/image/<%= $y %>"><%= $y %></a> [ <a href="#" id="year-<%= $y %>">+</a> ]</li>
+    <li><a href="/image/<%= $y %>"><%= $y %></a> [ <a href="#<%= $y %>" id="year-<%= $y %>">+</a> ]</li>
     % if ($show_year && $year == $y) {
       <ul id="year-ul-<%= $y %>">
     % } else {
