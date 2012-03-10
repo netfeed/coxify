@@ -27,7 +27,7 @@
       </div>
       <div class="row">
         <div class="span2">
-          %= include 'partial/year_list', show_year => 0, year => undef
+          %= include 'partial/year_list', show_year => 1, year => $images->[0]->created_date->year
         </div>
       </div>
       <div class="row">
