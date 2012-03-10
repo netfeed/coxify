@@ -47,6 +47,11 @@
         $('a[id^="year-"]').each(function() {
           var year = parseInt(this.id.replace("year-", ""));
           $("#year-" + year).click(function () {
+            if ($("#year-" + year).text() === "+") {
+              $("#year-" + year).text("-");
+            } else {
+              $("#year-" + year).text("+");
+            }
             $("#year-ul-" + year).toggle();
           });
         });
