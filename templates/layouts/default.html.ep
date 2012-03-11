@@ -65,14 +65,14 @@
       });
 
       % if (stash("next_page")) {
-        $(document).jkey('d, right', function() {
+        $(document).jkey('right', function() {
           var next = $('#coxify-next');
           window.location.href = next.attr('content');
         });
       % }
 
       % if (stash("prev_page")) {
-        $(document).jkey('a, left', function() {
+        $(document).jkey('left', function() {
           var prev = $('#coxify-prev');
           window.location.href = prev.attr('content');
         });
