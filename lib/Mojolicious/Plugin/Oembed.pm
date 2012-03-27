@@ -28,12 +28,13 @@ sub register {
     
     my $location = "${endpoint}?url=" . uri_escape($url);
 
-    my $ret;
     my $ua = Mojo::UserAgent->new;
     my $res = $ua->get($location)->res;
-    $res->dom('url')->each(sub { $ret = $_->text; });
 
-    return $ret;
+    my @list;
+    $res->dom('url')->each(sub { push @list, $_->text; });
+
+    return shift(@list);
   });
 }
 
