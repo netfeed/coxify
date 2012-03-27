@@ -30,11 +30,9 @@ sub register {
 
     my $ua = Mojo::UserAgent->new;
     my $res = $ua->get($location)->res;
+    my $list = $res->dom('url')->map(sub { $_->text; });
 
-    my @list;
-    $res->dom('url')->each(sub { push @list, $_->text; });
-
-    return shift(@list);
+    return shift(@{ $list });
   });
 }
 
