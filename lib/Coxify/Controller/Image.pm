@@ -236,4 +236,16 @@ sub add {
   });
 }
 
+sub random {
+  my ($self) = @_;
+
+  my $images = Coxify::Model::Image::Manager->get_objects_from_sql(qq|
+    SELECT id, created_date FROM images WHERE active ORDER BY random() LIMIT 1;;
+  |);
+
+  $self->render_not_found if !$images || !$images->[0] || !$images->[0]->active;
+
+  $self->redirect_to($images->[0]->url());
+}
+
 1;

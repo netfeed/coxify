@@ -26,6 +26,7 @@ sub startup {
 
   $r->route('/')->to("index#index");
   $r->route('/image')->to("image#main");
+  $r->route('/random')->to("image#random");
   $r->route('/image/add')->via('POST')->to("image#add");
   $r->route('/image/:year', year => qr/\d{4}/)->to("image#year");
   $r->route('/image/:year/:month', year => qr/\d{4}/, month => qr/\d{2}/)->to("image#month");
