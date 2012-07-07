@@ -21,7 +21,7 @@
       <published><%= $image->updated %></published>
       <updated><%= $image->updated %></updated>
       <content type="html">
-          &lt;a href="http://www.coxify.com<%= $image->url() %>?utm_source=atom&utm_medium=atom&utm_campaign=atom"&gt;
+          &lt;a href="http://www.coxify.com<%= $image->url() %>?utm_source=atom&amp;utm_medium=atom&amp;utm_campaign=atom"&gt;
             &lt;img src="<%= $image->thumb() %>"/&gt;
           &lt;/a&gt;
       </content>
