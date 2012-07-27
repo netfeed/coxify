@@ -64,6 +64,10 @@
         $(".colorbox").colorbox({opacity: 0.85});
       });
 
+      $(document).jkey('r', function() {
+        window.location.href = '/random';
+      });
+
       % if (stash("next_page")) {
         $(document).jkey('right', function() {
           var next = $('#coxify-next');
