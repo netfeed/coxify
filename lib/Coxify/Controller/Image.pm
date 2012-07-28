@@ -169,6 +169,8 @@ sub thousand {
     { title => "Thousand" }
   ]);
 
+  $self->stash(meta_data => { title => "Even thousand images", image => $images->[0] });
+
   my $years = Coxify::Image::year_list();
   $self->stash(years => $years);
   $self->stash(images => $images);
