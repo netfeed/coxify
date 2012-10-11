@@ -20,6 +20,13 @@ sub startup {
     },
   ]);
 
+  $self->helper(facebook_url_fix => sub {
+    my ($self, $url) = @_;
+    return '' unless $url;
+    my @parts =  split(/\?/, $url);
+    return $parts[0];
+  });
+
   # Routes
   my $r = $self->routes;
   $r->namespace('Coxify::Controller');

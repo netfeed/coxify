@@ -93,7 +93,7 @@
       <meta property="og:description" content="Coxify is your friendly neighbourhood image aggregator" />
       <meta property="og:image" content="<%= stash('meta_data')->{image}->thumb %>" />
       <meta property="og:type" content="non_profit" />
-      <meta property="og:url" content="<%= $self->tx->req->url->to_abs() %>" />
+      <meta property="og:url" content="<%= facebook_url_fix($self->tx->req->url->to_abs()) %>" />
       <meta property="og:site_name" content="Coxify" />
       <meta property="fb:admins" content="<%= config('facebook_admin') %>" />
     % }
