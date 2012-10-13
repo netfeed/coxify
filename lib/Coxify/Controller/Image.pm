@@ -245,9 +245,10 @@ sub random {
     SELECT id, created_date FROM images WHERE active ORDER BY random() LIMIT 1;;
   |);
 
-  $self->render_not_found if !$images || !$images->[0] || !$images->[0]->active;
+  my $image = shift @{ $images };
+  $self->render_not_found if !$image || !$image->active;
 
-  $self->redirect_to($images->[0]->url());
+  $self->redirect_to($image->url());
 }
 
 1;
