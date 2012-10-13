@@ -20,7 +20,7 @@ sub startup {
     },
   ]);
 
-  $self->helper(facebook_url_fix => sub {
+  $self->helper(canonical_url => sub {
     my ($self, $url) = @_;
     return '' unless $url;
     my @parts =  split(/\?/, $url);
