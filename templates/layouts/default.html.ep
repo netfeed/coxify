@@ -61,7 +61,12 @@
           $(this).remove();
         });
 
-        $(".colorbox").colorbox({opacity: 0.85});
+        $(".colorbox").colorbox({
+          opacity: 0.85,
+          scalePhotos: true,
+          maxWidth: "80%",
+          maxHeight: "80%",
+        });
       });
 
       $(document).jkey('r', function() {
