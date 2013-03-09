@@ -29,7 +29,7 @@ sub startup {
 
   # Routes
   my $r = $self->routes;
-  $r->namespace('Coxify::Controller');
+  $r->namespaces(['Coxify::Controller']);
 
   $r->route('/')->to("index#index");
   $r->route('/image')->to("image#main");
