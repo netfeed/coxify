@@ -178,6 +178,33 @@ sub thousand {
   $self->render;
 }
 
+sub popular {
+  my ($self) = @_;
+
+  $self->redirect_to("/");
+}
+
+sub popular_linked {
+  my ($self) = @_;
+
+  my $images = Coxify::Model::Image::Manager->get_objects_from_sql(qq|
+    SELECT * FROM images WHERE id IN (SELECT min(id) FROM images GROUP BY md5 ORDER BY count(md5) DESC LIMIT 35);
+  |);
+
+  $self->stash(breadcrumbs => [ 
+    { path => '/', title => 'Home' },
+    { title => "Popular" }
+  ]);
+  
+  $self->stash(meta_data => { title => "The most linked images", image => $images->[0] });
+  
+  my $years = Coxify::Image::year_list();
+  $self->stash(years => $years);
+  $self->stash(images => $images);
+  
+  $self->render;
+}
+
 sub add {
   my ($self) = @_;
   

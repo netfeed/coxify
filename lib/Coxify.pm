@@ -51,6 +51,9 @@ sub startup {
   $r->route('/oembed/lookup')->to('oembed#lookup');
 
   $r->route('/thousand')->to("image#thousand");
+ 
+  $r->route("/popular")->to("image#popular");
+  $r->route("/popular/linked")->to("image#popular_linked");
 
   $r->route('/atom')->to('atom#atom');
 }
