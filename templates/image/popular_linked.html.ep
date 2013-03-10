@@ -3,7 +3,7 @@
 <section>
   <div class="row">
     <div class="span10">
-      <h1 class="span10">All even thousand images</h1>
+      <h1 class="span10">The most linked images</h1>
       <ul class="thumbnails">
         % for my $image (@{ $images }) {
           <li class="span2" style="height: 150px;">
