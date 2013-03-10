@@ -188,7 +188,7 @@ sub popular_linked {
   my ($self) = @_;
 
   my $images = Coxify::Model::Image::Manager->get_objects_from_sql(qq|
-    SELECT * FROM images WHERE id IN (SELECT min(id) FROM images GROUP BY md5 ORDER BY count(md5) DESC LIMIT 35);
+    SELECT * FROM images WHERE id IN (SELECT min(id) FROM images WHERE active GROUP BY md5 ORDER BY count(md5) DESC LIMIT 35 );
   |);
 
   $self->stash(breadcrumbs => [ 
