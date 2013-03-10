@@ -1,6 +1,8 @@
 package Coxify;
 use Mojo::Base 'Mojolicious';
 
+use DateTime;
+
 # This method will run once at server start
 sub startup {
   my $self = shift;
@@ -25,6 +27,12 @@ sub startup {
     return '' unless $url;
     my @parts =  split(/\?/, $url);
     return $parts[0];
+  });
+
+  $self->hook(after_static => sub {
+    my $self = shift;
+#    $self->cookie(last_seen => '2012-10-11T11:49:26'); # for testing
+    $self->cookie(last_seen => DateTime->now()->strftime("%FT%T"));
   });
 
   # Routes

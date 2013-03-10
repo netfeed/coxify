@@ -6,8 +6,10 @@
       <h1 class="span10">Latest images</h1>
       <ul class="thumbnails">
         % for my $image (@{ $images }) {
+          % my $new = $last_seen && $last_seen < $image->updated ? ' new-image' : '';
+
           <li class="span2" style="height: 150px;">
-            <a class="thumbnail" href="<%= $image->url %>">
+            <a class="thumbnail<%= $new  %>" href="<%= $image->url %>">
               <img src="<%= $image->thumb %>"/>
             </a>
           </li>

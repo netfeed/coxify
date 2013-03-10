@@ -5,6 +5,7 @@ use strict;
 use base 'Mojolicious::Controller';
 
 use DateTime;
+use DateTime::Format::Strptime;
 use Coxify::Image;
 use Coxify::Model::Image;
 
@@ -44,9 +45,15 @@ sub index {
   my $years = Coxify::Image::year_list();
   $self->stash(years => $years);
 
+  my $last_seen_cookie = $self->cookie('last_seen');
+  my $strp = DateTime::Format::Strptime->new(pattern => "%FT%T");
+  my $last_seen = $last_seen_cookie ? $strp->parse_datetime($last_seen_cookie) : undef;
+
+  $self->stash(last_seen => $last_seen);
   $self->stash(images => $images);
   $self->stash(meta_data => { image => $images->[0] });
   $self->stash(breadcrumbs => [ { path => '/', title => 'Home' }]);
+  
 
   $self->render;
 }
